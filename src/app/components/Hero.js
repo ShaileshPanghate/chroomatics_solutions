@@ -1,23 +1,23 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const slides = [
   {
     id: 1,
-    img: '/back1.jpg',
-    heading: 'Elevate Your Living Space',
+    img: '/Back11.jpg',
+    heading: 'The Next Gen Home',
     subheading: 'Premium Home Automation & Audio-Visual Solutions',
   },
   {
     id: 2,
-    img: '/back2.jpg',
+    img: '/Back2.jpg',
     heading: 'Smart Homes, Smarter Living',
     subheading: 'Seamless control at your fingertips.',
   },
   {
     id: 3,
-    img: '/back3.jpg',
+    img: '/Back33.jpg',
     heading: 'Luxury Meets Technology',
     subheading: 'Tailored AV experiences for every home.',
   },
@@ -45,15 +45,15 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* WhatsApp Button - Fixed position */}
+      {/* WhatsApp Button */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.5, duration: 0.3 }}
-        className="fixed right-6 bottom-6 z-40"
+        className="fixed right-5 bottom-6 z-40"
       >
         <a
-          href="https://wa.me/919359251636" // Replace with your actual WhatsApp number
+          href="https://wa.me/919359251636"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-lg hover:bg-[#128C7E] transition-all duration-300"
@@ -70,67 +70,71 @@ const Hero = () => {
         </a>
       </motion.div>
 
+      {/* Background Images */}
       <div className="absolute inset-0 z-0">
-        <AnimatePresence mode="wait">
-          <motion.img
-            key={slides[current].id}
-            src={slides[current].img}
-            alt="Hero Background"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
-            className="w-full h-full object-cover absolute inset-0"
-          />
-        </AnimatePresence>
+        <div className="relative w-full h-full">
+          {slides.map((slide, index) => (
+            <motion.img
+              key={slide.id}
+              src={slide.img}
+              alt="Hero Background"
+              initial={{ opacity: index === current ? 1 : 0 }}
+              animate={{ opacity: index === current ? 1 : 0 }}
+              transition={{ duration: 1.2, ease: 'easeInOut' }}
+              className="w-full h-full object-cover absolute inset-0"
+            />
+            ))}
+            {/* Dark Overlay */}
+            <div className="absolute inset-0 bg-black opacity-50"></div>
+        </div>
       </div>
 
+      {/* Text and Buttons */}
       <div className="container mx-auto px-6 z-20 text-center">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={slides[current].heading}
-            variants={textVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            className="max-w-4xl mx-auto"
-          >
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              <span className="bg-gradient-to-r from-orange-400 via-orange-500 to-yellow-400 bg-clip-text text-transparent">
-                {slides[current].heading}
-              </span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-100 mb-10 tracking-wide">
-              {slides[current].subheading}
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 bg-gradient-to-r from-orange-500 via-orange-600 to-yellow-500 text-white font-semibold rounded-lg shadow-xl hover:brightness-110 transition-all"
-              >
-                Explore Solutions
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 bg-transparent border-2 border-orange-400 text-white font-semibold rounded-lg hover:bg-orange-400 hover:text-black transition-colors"
-              >
-                Contact Us
-              </motion.button>
-            </div>
-          </motion.div>
-        </AnimatePresence>
+        <motion.div
+          key={slides[current].heading}
+          variants={textVariants}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          className="max-w-4xl mx-auto"
+        >
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            <span className="bg-gradient-to-r from-orange-400 via-orange-500 to-yellow-400 bg-clip-text text-transparent ">
+              {slides[current].heading}
+            </span>
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-100 mb-10 tracking-wide">
+            {slides[current].subheading}
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-3 bg-gradient-to-r from-orange-500 via-orange-600 to-yellow-500 text-white font-semibold rounded-lg shadow-xl hover:brightness-110 transition-all"
+            >
+              Explore Solutions
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-3 bg-transparent border-2 border-orange-400 text-white font-semibold rounded-lg hover:bg-orange-400 hover:text-black transition-colors"
+            >
+              Contact Us
+            </motion.button>
+          </div>
+        </motion.div>
 
+        {/* Scroll Indicator */}
         <motion.div
           animate={{ y: [0, 15, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
           className="absolute bottom-10 left-0 right-0 flex justify-center text-white cursor-pointer"
           onClick={() =>
-            document.getElementById('about').scrollIntoView({ behavior: 'smooth' })
+            document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })
           }
         >
-          {/* Your scroll indicator */}
+          {/* You can add an arrow icon here if you want */}
         </motion.div>
       </div>
     </section>

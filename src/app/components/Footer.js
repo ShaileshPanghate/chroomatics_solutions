@@ -99,33 +99,6 @@ const Footer = () => {
             </motion.div>
           ))}
 
-          {/* Newsletter */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-white font-semibold text-lg mb-6 tracking-wide">Newsletter</h3>
-            <p className="mb-6 leading-relaxed">
-              Subscribe to our newsletter for the latest updates and offers.
-            </p>
-            <form className="flex rounded-lg overflow-hidden shadow-lg">
-              <input
-                type="email"
-                placeholder="Your email"
-                className="px-4 py-2 w-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-400"
-              />
-              <motion.button
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                type="submit"
-                className="bg-orange-500 text-white px-4 py-2 hover:bg-orange-600 transition-all duration-300"
-              >
-                Subscribe
-              </motion.button>
-            </form>
-          </motion.div>
         </div>
 
         {/* Footer Bottom */}

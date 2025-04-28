@@ -6,6 +6,7 @@ import Services from '../app/components/Services';
 import Brands from '../app/components/Brands';
 import Founders from '../app/components/Founders';
 import Footer from '../app/components/Footer';
+import ContactSection from './components/ContactSection';
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <About />
         <Services />
         <Brands />
+        {/* <ContactSection /> */}
         <Founders />
       </main>
       <Footer />

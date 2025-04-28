@@ -5,40 +5,40 @@ import { useInView } from 'react-intersection-observer';
 const services = [
   {
     title: "Smart Home Automation",
-    description: "Complete control of lighting, climate, security, and entertainment from a single interface.",
+    description: "Wired & wireless solutions for complete home control",
     icon: "🏠",
   },
   {
-    title: "Home Theater Systems",
-    description: "Cinema-quality audio and video experiences tailored to your space and preferences.",
+    title: "AV Solutions",
+    description: "Home theater, PA Stereo, PA System, Pro Ticker System",
     icon: "🎬",
   },
   {
-    title: "Whole-House Audio",
-    description: "Seamless music distribution to every room with perfect synchronization.",
-    icon: "🎵",
+    title: "Networking",
+    description: "Reliable wired and wireless network infrastructure",
+    icon: "🌐",
   },
   {
-    title: "Lighting Control",
-    description: "Custom lighting scenes that adapt to your mood, schedule, and activities.",
-    icon: "💡",
-  },
-  {
-    title: "Security & Surveillance",
-    description: "Comprehensive protection with smart monitoring and remote access.",
+    title: "Security Systems",
+    description: "Comprehensive protection for your property",
     icon: "🔒",
   },
   {
-    title: "Network Solutions",
-    description: "High-performance networking for all your connected devices.",
-    icon: "🌐",
+    title: "Lighting Solutions",
+    description: "Smart and energy-efficient lighting systems",
+    icon: "💡",
+  },
+  {
+    title: "EPABX",
+    description: "",
+    icon: "🛠️",
   },
 ];
 
 const Services = () => {
   const [ref, inView] = useInView({
-    threshold: 0.2,
-    triggerOnce: false,
+    threshold: 0.1,
+    triggerOnce: true,
   });
 
   const container = {
@@ -46,29 +46,39 @@ const Services = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.15,
       },
     },
   };
 
   const item = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        type: "spring",
+        damping: 10,
+        stiffness: 100
+      }
+    },
   };
 
   return (
-    <section id="services" ref={ref} className="py-20 bg-white border-t-4 border-orange-100">
-      <div className="container mx-auto px-6">
+    <section id="services" ref={ref} className="py-20 bg-gradient-to-b from-white to-orange-50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 40 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-orange-600 mb-4">Our Services & Products</h2>
-          <div className="w-24 h-1.5 bg-orange-500 mx-auto mb-6 rounded"></div>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            Comprehensive solutions tailored to your lifestyle and preferences.
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-500">Products & Services</span>
+          </h2>
+          <div className="w-20 h-1.5 bg-gradient-to-r from-orange-400 to-amber-400 mx-auto mb-6 rounded-full"></div>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            Comprehensive solutions tailored to enhance your lifestyle and security
           </p>
         </motion.div>
 
@@ -76,18 +86,31 @@ const Services = () => {
           variants={container}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {services.map((service, index) => (
             <motion.div
               key={index}
               variants={item}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="border border-orange-200 bg-orange-50 p-8 rounded-xl shadow hover:shadow-lg transition-all duration-300"
+              whileHover={{ 
+                y: -8,
+                boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)"
+              }}
+              className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 overflow-hidden relative"
             >
-              <div className="text-5xl mb-5 text-orange-600">{service.icon}</div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2 border-b pb-1 border-orange-200">{service.title}</h3>
-              <p className="text-gray-700">{service.description}</p>
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-400 to-amber-400"></div>
+              <div className="flex items-start mb-4">
+                <div className="text-4xl mr-4 text-amber-500">{service.icon}</div>
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-800">{service.title}</h3>
+                  <p className="text-gray-600 mt-1">{service.description}</p>
+                </div>
+              </div>
+              <div className="mt-4">
+                <button className="text-sm font-medium text-amber-600 hover:text-amber-700 transition-colors">
+                  Learn more →
+                </button>
+              </div>
             </motion.div>
           ))}
         </motion.div>
@@ -99,11 +122,11 @@ const Services = () => {
           className="mt-16 text-center"
         >
           <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 bg-orange-600 text-white font-semibold rounded-lg shadow hover:bg-orange-700 transition-colors"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+            className="px-8 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all"
           >
-            View All Services
+            Explore All Services
           </motion.button>
         </motion.div>
       </div>
