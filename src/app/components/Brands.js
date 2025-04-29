@@ -162,6 +162,7 @@ const Brands = () => {
                     src={brand.logo}
                     alt={brand.name}
                     className="h-12 object-contain max-w-[100px]"
+                    loading='lazy'
                   />
                 </motion.div>
               ))}

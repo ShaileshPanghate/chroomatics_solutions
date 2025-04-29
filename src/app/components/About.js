@@ -46,6 +46,7 @@ const About = () => {
               <img
                 src="./assets/about.jpg"
                 alt="About Chromatics"
+                loading='lazy'
                 className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-orange-700/30 to-transparent"></div>
