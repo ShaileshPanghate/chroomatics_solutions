@@ -45,7 +45,7 @@ const Footer = () => {
           >
             <Link href="#home">
               <div className="flex items-center cursor-pointer mb-6">
-                <span className="text-3xl font-extrabold text-orange-500 tracking-wide">Chromatics Solutions</span>
+                <span className="text-3xl font-extrabold text-orange-500 tracking-wide">Chromatics </span>
               </div>
             </Link>
             <p className="mb-6 leading-relaxed">

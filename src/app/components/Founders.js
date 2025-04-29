@@ -61,7 +61,7 @@ const Founders = () => {
 
           <div className="w-20 h-1 bg-orange-500 mx-auto mb-6"></div>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            The visionary leaders behind Chromatics' success.
+            The visionary leaders behind Chromatics success.
           </p>
         </motion.div>
 
