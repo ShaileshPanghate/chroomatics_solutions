@@ -11,7 +11,7 @@ const slides = [
   },
   {
     id: 2,
-    img: '/Back2.jpg',
+    img: '/Back22.jpg',
     heading: 'Smart Homes, Smarter Living',
     subheading: 'Seamless control at your fingertips.',
   },
