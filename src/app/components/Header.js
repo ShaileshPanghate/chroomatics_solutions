@@ -16,12 +16,12 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: './#home' },
-    { name: 'About', href: './#about' },
-    { name: 'Services', href: './#services' },
-    { name: 'Brands', href: './#brands' },
-    { name: 'Contact US', href: './contact' },
-    { name: 'Founders', href: './#founders' },
+    { name: 'Home', href: '#home' },
+    { name: 'About', href: '#about' },
+    { name: 'Services', href: '#services' },
+    { name: 'Brands', href: '#brands' },
+    { name: 'Contact', href: '/contact' },
+    { name: 'Founders', href: '#founders' },
   ];
 
   return (
@@ -29,30 +29,28 @@ const Header = () => {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed w-full z-50 transition-all duration-300 bg-white ${isScrolled ? 'shadow-lg py-2' : 'shadow-sm py-4'
-        }`}
+      className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-white/90 backdrop-blur-sm py-3'}`}
     >
-
-      <div className="container mx-auto px-20 flex justify-between items-center">
-        <Link href="#home">
+      <div className="container mx-auto px-4 sm:px-6 flex justify-between items-center">
+        {/* Logo - Adjusted for mobile */}
+        <Link href="#home" className="flex items-center">
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center group"
+            className="flex items-center"
           >
-            <img src='./logo.png' width={108} height={108} />
-            <span className="text-3xl font-bold bg-gradient-to-r from-orange-500 to-amber-600 bg-clip-text text-transparent">
-            </span>
-            <motion.span
-              initial={{ width: 0 }}
-              whileHover={{ width: '100%' }}
-              className="block h-0.5 bg-amber-500 mt-1 transition-all duration-300"
+            <img 
+              src='/logo.png' 
+              alt="Company Logo"
+              width={80} 
+              height={80}
+              className="w-12 h-12 sm:w-16 sm:h-16"
             />
           </motion.div>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-2">
+        <nav className="hidden md:flex space-x-1 lg:space-x-2">
           {navLinks.map((link) => (
             <motion.div
               key={link.name}
@@ -62,65 +60,66 @@ const Header = () => {
             >
               <Link
                 href={link.href}
-                className="px-6 py-4 text-gray-700 hover:text-orange-600 font-medium transition-colors relative group"
+                className="px-3 py-2 lg:px-4 lg:py-3 text-sm lg:text-base text-gray-700 hover:text-orange-600 font-medium transition-colors relative group"
               >
-                <strong>
-                  {link.name}
-                </strong>
+                {link.name}
                 <motion.span
                   initial={{ width: 0 }}
                   whileHover={{ width: '100%' }}
                   className="absolute left-0 bottom-0 h-0.5 bg-amber-500 transition-all duration-300"
                 />
-                <span className="absolute inset-0 rounded-lg bg-orange-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
               </Link>
             </motion.div>
           ))}
         </nav>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Button - More visible */}
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          className="md:hidden focus:outline-none p-2 rounded-full bg-orange-50"
+          className="md:hidden p-2 rounded-lg focus:outline-none"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Menu"
         >
-          <svg
-            className="w-6 h-6 text-orange-600"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            {mobileMenuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
+          <div className="space-y-1.5">
+            <motion.span
+              animate={mobileMenuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
+              className="block w-6 h-0.5 bg-orange-600"
+            />
+            <motion.span
+              animate={mobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
+              className="block w-6 h-0.5 bg-orange-600"
+            />
+            <motion.span
+              animate={mobileMenuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+              className="block w-6 h-0.5 bg-orange-600"
+            />
+          </div>
         </motion.button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Improved styling */}
       {mobileMenuOpen && (
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          className="md:hidden bg-white shadow-xl border-t border-orange-100"
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          exit={{ opacity: 0, height: 0 }}
+          transition={{ duration: 0.3 }}
+          className="md:hidden bg-white shadow-lg overflow-hidden"
         >
-          <div className="container mx-auto px-6 py-4 flex flex-col space-y-3">
+          <div className="px-4 pt-2 pb-4 space-y-2">
             {navLinks.map((link) => (
               <motion.div
                 key={link.name}
-                whileHover={{ x: 5 }}
-                whileTap={{ scale: 0.98 }}
+                initial={{ x: 20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ type: 'spring', stiffness: 300 }}
                 onClick={() => setMobileMenuOpen(false)}
-                className="border-b border-orange-50 last:border-0 pb-3 last:pb-0"
+                className="border-b border-gray-100 last:border-0"
               >
                 <Link
                   href={link.href}
-                  className="block px-4 py-2 text-gray-700 hover:text-orange-600 font-medium transition-colors rounded-lg hover:bg-orange-50"
+                  className="block px-4 py-3 text-gray-800 hover:text-orange-600 font-medium rounded-lg hover:bg-orange-50 transition-colors"
                 >
                   {link.name}
                 </Link>
