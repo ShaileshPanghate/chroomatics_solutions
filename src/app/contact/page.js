@@ -108,9 +108,9 @@ const ContactSection = () => {
                     </div>
                     <div className="ml-4">
                       <h4 className="text-lg font-semibold text-gray-800">Address</h4>
-                      <p className="text-gray-600">Rachna Ring Road Metro station, Plot no 31, Hingna T point,
-                        <br /> Rachna Ring Road, Rajendra Nagar, Takli Seem,
-                        <br /> Nagpur, Maharashtra 440036</p>
+                      <p className="text-gray-600">Plot no. 32 , Chromatics Home Automation and AV Solutions ,
+                       <br/>Metro Station , Hingna T - Point , Rajendra Nagar,
+                       <br/>Rachna Ring Road , Takli Seem , Nagpur , Maharashtra - 440036</p>
                     </div>
                   </div>
                 </div>
