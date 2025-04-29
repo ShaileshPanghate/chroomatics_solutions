@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const slides = [
   {
@@ -83,9 +84,9 @@ const Hero = () => {
               transition={{ duration: 1.2, ease: 'easeInOut' }}
               className="w-full h-full object-cover absolute inset-0"
             />
-            ))}
-            {/* Dark Overlay */}
-            <div className="absolute inset-0 bg-black opacity-50"></div>
+          ))}
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black opacity-50"></div>
         </div>
       </div>
 
@@ -112,16 +113,25 @@ const Hero = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-3 bg-gradient-to-r from-orange-500 via-orange-600 to-yellow-500 text-white font-semibold rounded-lg shadow-xl hover:brightness-110 transition-all"
+              onClick={() => {
+                document.getElementById('services')?.scrollIntoView({
+                  behavior: 'smooth'
+                });
+              }}
             >
               Explore Solutions
             </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 bg-transparent border-2 border-orange-400 text-white font-semibold rounded-lg hover:bg-orange-400 hover:text-black transition-colors"
-            >
-              Contact Us
-            </motion.button>
+
+            <Link href="/contact" passHref >
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-block px-8 py-3 bg-transparent border-2 border-orange-400 text-white font-semibold rounded-lg hover:bg-orange-400 hover:text-black transition-colors cursor-pointer"
+              >
+                Contact Us
+              </motion.button>
+            </Link>
+
           </div>
         </motion.div>
 

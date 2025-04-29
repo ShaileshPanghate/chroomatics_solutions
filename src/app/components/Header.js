@@ -16,12 +16,12 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Brands', href: '#brands' },
-    { name: 'Contact', href: '/contact' },
-    { name: 'Founders', href: '#founders' },
+    { name: 'Home', href: './#home' },
+    { name: 'About', href: './#about' },
+    { name: 'Services', href: './#services' },
+    { name: 'Brands', href: './#brands' },
+    { name: 'Contact US', href: './contact' },
+    { name: 'Founders', href: './#founders' },
   ];
 
   return (
@@ -33,18 +33,19 @@ const Header = () => {
     >
       <div className="container mx-auto px-4 sm:px-6 flex justify-between items-center">
         {/* Logo - Adjusted for mobile */}
-        <Link href="#home" className="flex items-center">
+        <Link href="./#home">
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center"
+            className="flex items-center group"
           >
-            <img 
-              src='/logo.png' 
-              alt="Company Logo"
-              width={80} 
-              height={80}
-              className="w-12 h-12 sm:w-16 sm:h-16"
+            <img src='./logo.png' width={108} height={108} />
+            <span className="text-3xl font-bold bg-gradient-to-r from-orange-500 to-amber-600 bg-clip-text text-transparent">
+            </span>
+            <motion.span
+              initial={{ width: 0 }}
+              whileHover={{ width: '100%' }}
+              className="block h-0.5 bg-amber-500 mt-1 transition-all duration-300"
             />
           </motion.div>
         </Link>

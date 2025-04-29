@@ -19,16 +19,15 @@ const Footer = () => {
         { name: "About Us", href: "#about" },
         { name: "Our Team", href: "#founders" },
         { name: "Brands", href: "#brands" },
-        { name: "Careers", href: "#" },
       ],
     },
     {
       title: "Support",
       items: [
-        { name: "Contact Us", href: "#" },
-        { name: "FAQs", href: "#" },
-        { name: "Support Center", href: "#" },
-        { name: "System Status", href: "#" },
+        { name: "Contact Us", href: "./contact" },
+        { name: "FAQs", href: "./contact" },
+        { name: "Support Center", href: "./contact" },
+        { name: "System Status", href: "./contact" },
       ],
     },
   ];
@@ -46,7 +45,7 @@ const Footer = () => {
           >
             <Link href="#home">
               <div className="flex items-center cursor-pointer mb-6">
-                <span className="text-3xl font-extrabold text-orange-500 tracking-wide">Chromatics</span>
+                <span className="text-3xl font-extrabold text-orange-500 tracking-wide">Chromatics Solutions</span>
               </div>
             </Link>
             <p className="mb-6 leading-relaxed">
@@ -61,7 +60,7 @@ const Footer = () => {
                 <motion.a
                   key={i}
                   whileHover={{ y: -3, scale: 1.1 }}
-                  href="#"
+                  href="./#services"
                   className="text-gray-400 hover:text-orange-500 transition"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
