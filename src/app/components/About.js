@@ -29,7 +29,7 @@ const About = () => {
           </h2>
           <div className="w-24 h-1.5 bg-gradient-to-r from-orange-500 to-orange-600 mx-auto mb-6 rounded-full" />
           <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            Transforming spaces with cutting-edge technology and elegant design since 2010
+            Transforming spaces with cutting-edge technology and elegant designs 
           </p>
         </motion.div>
 
@@ -80,7 +80,7 @@ const About = () => {
                 whileHover={{ y: -5 }}
                 className="bg-white p-6 rounded-xl border border-orange-200 shadow-md hover:shadow-lg transition-all"
               >
-                <div className="text-orange-600 text-4xl font-bold mb-2">10+</div>
+                <div className="text-orange-600 text-4xl font-bold mb-2">3+</div>
                 <h4 className="font-semibold text-gray-800">Years Experience</h4>
               </motion.div>
               
@@ -88,7 +88,7 @@ const About = () => {
                 whileHover={{ y: -5 }}
                 className="bg-white p-6 rounded-xl border border-orange-200 shadow-md hover:shadow-lg transition-all"
               >
-                <div className="text-orange-600 text-4xl font-bold mb-2">500+</div>
+                <div className="text-orange-600 text-4xl font-bold mb-2">150+</div>
                 <h4 className="font-semibold text-gray-800">Projects Completed</h4>
               </motion.div>
             </div>

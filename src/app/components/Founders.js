@@ -5,7 +5,7 @@ import { useInView } from 'react-intersection-observer';
 const founders = [
   {
     name: "Prasanna Shete",
-    role: "Partners",
+    role: "Partner",
     bio: "",
     image: "./assets/person1.png",
     social: {
@@ -15,7 +15,7 @@ const founders = [
   },
   {
     name: "Hrishikesh Chaudhari",
-    role: "Partners",
+    role: "Partner",
     bio: "",
     image: "./assets/person2.png",
     social: {

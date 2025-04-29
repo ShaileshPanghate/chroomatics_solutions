@@ -3,21 +3,23 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 const brands = [
+  { name: "Marantz", logo: "./assets/Marantz.png" },
+  { name: "lg", logo: "./assets/lg.png" },
+  { name: "epson", logo: "./assets/Epson.png" },
   { name: "Arcam", logo: "./assets/Arcam.png" },
   { name: "ArtSound", logo: "./assets/ArtSound.png" },
-  { name: "benq", logo: "./assets/benq.png" },
   { name: "Casa", logo: "./assets/Casa.svg" },
-  { name: "denon", logo: "./assets/denon.png" },
-  { name: "epson", logo: "./assets/epson.png" },
+  { name: "QED", logo: "./assets/QED.avif" },
   { name: "focal_Utopia", logo: "./assets/focal_Utopia.png" },
   { name: "heco", logo: "./assets/heco.png" },
-  { name: "lg", logo: "./assets/lg.png" },
   { name: "magnet", logo: "./assets/magnet.png" },
-  { name: "Marantz", logo: "./assets/Marantz.png" },
   { name: "Polk-Audio", logo: "./assets/Polk-Audio.png" },
   { name: "heco", logo: "./assets/QED.jpg" },
   { name: "taga_Harmony", logo: "./assets/taga_Harmony.png" },
   { name: "zemote", logo: "./assets/zemote.png" },
+  { name: "monster", logo: "./assets/Monster.jpg" },
+  { name: "denon", logo: "./assets/denon.png" },
+  { name: "benq", logo: "./assets/benq.png" },
 ];
 
 const Brands = () => {
@@ -26,8 +28,14 @@ const Brands = () => {
     triggerOnce: false,
   });
 
+  // Split brands into two arrays for mobile view
+  const firstHalfBrands = brands.slice(0, Math.ceil(brands.length / 2));
+  const secondHalfBrands = brands.slice(Math.ceil(brands.length / 2));
+  
   // Duplicate brands for seamless looping
   const duplicatedBrands = [...brands, ...brands];
+  const duplicatedFirstHalf = [...firstHalfBrands, ...firstHalfBrands];
+  const duplicatedSecondHalf = [...secondHalfBrands, ...secondHalfBrands];
 
   return (
     <section id="brands" ref={ref} className="py-24 bg-white overflow-hidden">
@@ -47,9 +55,8 @@ const Brands = () => {
           </p>
         </motion.div>
 
-        {/* Marquee Container */}
-        <div className="relative w-full overflow-hidden py-8">
-          {/* First Marquee (Left to Right) */}
+        {/* Desktop View - Single Marquee */}
+        <div className="hidden md:block relative w-full overflow-hidden py-8">
           <motion.div 
             className="flex items-center gap-8 w-max"
             animate={{ 
@@ -65,12 +72,12 @@ const Brands = () => {
           >
             {duplicatedBrands.map((brand, index) => (
               <motion.div
-                key={`first-${index}`}
+                key={`desktop-${index}`}
                 whileHover={{ 
                   scale: 1.1,
                   boxShadow: "0 10px 25px -5px rgba(249, 115, 22, 0.3), 0 8px 10px -6px rgba(249, 115, 22, 0.2)"
                 }}
-                className="flex-shrink-0 px-6  py-6 flex justify-center items-center p-5 rounded-xl
+                className="flex-shrink-0 px-6 py-6 flex justify-center items-center p-5 rounded-xl
                 shadow-[0_0_15px_rgba(249,115,22,0.2)]
                 hover:shadow-[0_0_25px_rgba(249,115,22,0.3)]
                 transition-all duration-300 bg-white"
@@ -83,35 +90,83 @@ const Brands = () => {
               </motion.div>
             ))}
           </motion.div>
+        </div>
 
-          {/* Second Marquee (Right to Left) - Optional reverse direction */}
-          {/* <motion.div 
-            className="flex items-center gap-12 w-max mt-8"
-            animate={{ 
-              x: [-1000, 0],
-            }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                duration: 35,
-                ease: "linear"
-              }
-            }}
-          >
-            {duplicatedBrands.reverse().map((brand, index) => (
-              <motion.div
-                key={`second-${index}`}
-                whileHover={{ scale: 1.1 }}
-                className="flex-shrink-0 px-4 py-2"
-              >
-                <img
-                  src={brand.logo}
-                  alt={brand.name}
-                  className="h-12 object-contain max-w-[120px]"
-                />
-              </motion.div>
-            ))}
-          </motion.div> */}
+        {/* Mobile View - Two Rows */}
+        <div className="md:hidden space-y-8">
+          {/* First Row */}
+          <div className="relative w-full overflow-hidden py-4">
+            <motion.div 
+              className="flex items-center gap-8 w-max"
+              animate={{ 
+                x: [0, -600],
+              }}
+              transition={{
+                x: {
+                  repeat: Infinity,
+                  duration: 25,
+                  ease: "linear"
+                }
+              }}
+            >
+              {duplicatedFirstHalf.map((brand, index) => (
+                <motion.div
+                  key={`mobile-first-${index}`}
+                  whileHover={{ 
+                    scale: 1.1,
+                    boxShadow: "0 10px 25px -5px rgba(249, 115, 22, 0.3), 0 8px 10px -6px rgba(249, 115, 22, 0.2)"
+                  }}
+                  className="flex-shrink-0 px-6 py-6 flex justify-center items-center p-5 rounded-xl
+                  shadow-[0_0_15px_rgba(249,115,22,0.2)]
+                  hover:shadow-[0_0_25px_rgba(249,115,22,0.3)]
+                  transition-all duration-300 bg-white"
+                >
+                  <img
+                    src={brand.logo}
+                    alt={brand.name}
+                    className="h-12 object-contain max-w-[100px]"
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Second Row */}
+          <div className="relative w-full overflow-hidden py-4">
+            <motion.div 
+              className="flex items-center gap-8 w-max"
+              animate={{ 
+                x: [-600, 0],
+              }}
+              transition={{
+                x: {
+                  repeat: Infinity,
+                  duration: 25,
+                  ease: "linear"
+                }
+              }}
+            >
+              {duplicatedSecondHalf.map((brand, index) => (
+                <motion.div
+                  key={`mobile-second-${index}`}
+                  whileHover={{ 
+                    scale: 1.1,
+                    boxShadow: "0 10px 25px -5px rgba(249, 115, 22, 0.3), 0 8px 10px -6px rgba(249, 115, 22, 0.2)"
+                  }}
+                  className="flex-shrink-0 px-6 py-6 flex justify-center items-center p-5 rounded-xl
+                  shadow-[0_0_15px_rgba(249,115,22,0.2)]
+                  hover:shadow-[0_0_25px_rgba(249,115,22,0.3)]
+                  transition-all duration-300 bg-white"
+                >
+                  <img
+                    src={brand.logo}
+                    alt={brand.name}
+                    className="h-12 object-contain max-w-[100px]"
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
         </div>
 
         <motion.div

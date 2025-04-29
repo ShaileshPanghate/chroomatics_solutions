@@ -121,13 +121,13 @@ const Services = () => {
           transition={{ delay: 0.8, duration: 0.6 }}
           className="mt-16 text-center"
         >
-          <motion.button
+          {/* <motion.button
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
             className="px-8 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all"
           >
             Explore All Services
-          </motion.button>
+          </motion.button> */}
         </motion.div>
       </div>
     </section>
