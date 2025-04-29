@@ -111,15 +111,7 @@ const Footer = () => {
           <p className="text-gray-500 mb-4 md:mb-0">
             © {new Date().getFullYear()} <span className="text-orange-500">Chromatics</span>. All rights reserved.
           </p>
-          <div className="flex space-x-6">
-            {["Privacy Policy", "Terms of Service", "Cookies"].map((item, idx) => (
-              <Link key={idx} href="#">
-                <span className="text-gray-500 hover:text-orange-400 transition-colors duration-200">
-                  {item}
-                </span>
-              </Link>
-            ))}
-          </div>
+         
         </motion.div>
       </div>
     </footer>
